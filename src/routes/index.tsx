@@ -15,13 +15,13 @@ export const AppRoutes: React.FC = () => {
           path: "",
           element: <CreateWebsite />,
         },
-        { path: "*", element: <Navigate to="." /> },
       ],
     },
     {
       path: "result",
       element: <WebsiteDetails />,
     },
+    { path: "*", element: <Navigate to="." /> },
   ]);
 
   return <>{element}</>;
