@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import { queryClient } from "@/lib/react-query";
 
 import { NotificationProvider } from "./notification";
+import { ThemeProvider } from "./theme";
 
 const ErrorFallback = () => {
   return (
@@ -52,7 +53,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
           <NotificationProvider />
-          <Router>{children}</Router>
+          <ThemeProvider>
+            <Router>{children}</Router>
+          </ThemeProvider>
         </QueryClientProvider>
       </ErrorBoundary>
     </React.Suspense>
