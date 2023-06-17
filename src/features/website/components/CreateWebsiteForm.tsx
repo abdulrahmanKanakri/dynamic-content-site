@@ -37,22 +37,23 @@ interface FormValues {
 }
 
 interface CreateWebsiteFormProps {
-  onSuccess: () => void;
+  onSuccess: (id: string) => void;
 }
 
 export const CreateWebsiteForm: React.FC<CreateWebsiteFormProps> = ({
   onSuccess,
 }) => {
-  const { targetUsersList, isLoading: targetUsersListLoading } = useGetTargetUsers();
+  const { targetUsersList, isLoading: targetUsersListLoading } =
+    useGetTargetUsers();
   const { createWebsite, isLoading } = useCreateWebsite();
 
   const handleSubmit = async (values: FormValues) => {
     const response = await createWebsite({
-      name: values.name,
-      description: values.description,
-      target_user: values.targetUser,
+      websiteName: values.name,
+      websiteDescription: values.description,
+      targetUser: values.targetUser,
     });
-    onSuccess();
+    onSuccess(response.data._id);
     AppNotification.success(response.message);
   };
 
@@ -104,10 +105,15 @@ export const CreateWebsiteForm: React.FC<CreateWebsiteFormProps> = ({
                     {...register("targetUser")}
                     defaultValue=""
                     disabled={isLoading || targetUsersListLoading}
+                    sx={{ textTransform: "capitalize" }}
                   >
                     {targetUsersList.map((type) => (
-                      <MenuItem value={type.title} key={type.id}>
-                        {type.title}
+                      <MenuItem
+                        value={type}
+                        key={type}
+                        sx={{ textTransform: "capitalize" }}
+                      >
+                        {type}
                       </MenuItem>
                     ))}
                   </Select>

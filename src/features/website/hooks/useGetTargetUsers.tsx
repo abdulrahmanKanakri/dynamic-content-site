@@ -9,12 +9,7 @@ export const useGetTargetUsers = () => {
   });
 
   return {
-    targetUsersList:
-      data?.data ??
-      ["everyone", "adult", "kids"].map((title, i) => ({
-        id: i + 1,
-        title,
-      })),
+    targetUsersList: data?.data ?? [],
     isLoading,
     isSuccess,
     isError,

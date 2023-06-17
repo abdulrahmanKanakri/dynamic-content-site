@@ -1,4 +1,4 @@
 export const AppPaths = Object.freeze({
   createWebsite: "/",
-  websiteDetails: "/result",
+  websiteDetails: "/website/:id",
 });

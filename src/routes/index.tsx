@@ -18,7 +18,7 @@ export const AppRoutes: React.FC = () => {
       ],
     },
     {
-      path: "result",
+      path: "website/:id",
       element: <WebsiteDetails />,
     },
     { path: "*", element: <Navigate to="." /> },

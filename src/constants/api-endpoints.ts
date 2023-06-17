@@ -1,5 +1,5 @@
 export const ApiEndpoints = Object.freeze({
-  createWebsite: "/website/create",
+  createWebsite: "/website",
   getWebsiteDetails: "/website/:id",
   getTargetUsers: "/website/target-users",
 });
