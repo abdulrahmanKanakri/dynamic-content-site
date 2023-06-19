@@ -22,6 +22,10 @@ const schema = z.object({
     .string()
     .nonempty("name is required")
     .max(32, "name must be less than 32 characters"),
+  title: z
+    .string()
+    .nonempty("title is required")
+    .max(60, "title must be less than 60 characters"),
   description: z
     .string()
     .nonempty("description is required")
@@ -33,6 +37,7 @@ const schema = z.object({
 interface FormValues {
   name: string;
   description: string;
+  title: string;
   targetUser: string;
 }
 
@@ -49,8 +54,9 @@ export const CreateWebsiteForm: React.FC<CreateWebsiteFormProps> = ({
 
   const handleSubmit = async (values: FormValues) => {
     const response = await createWebsite({
-      websiteName: values.name,
-      websiteDescription: values.description,
+      name: values.name,
+      description: values.description,
+      title: values.title,
       targetUser: values.targetUser,
     });
     onSuccess(response.data._id);
@@ -72,6 +78,17 @@ export const CreateWebsiteForm: React.FC<CreateWebsiteFormProps> = ({
                   error={!!errors.name}
                   helperText={errors.name?.message ?? ""}
                   {...register("name")}
+                  disabled={isLoading}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  label="Website Title"
+                  required
+                  error={!!errors.title}
+                  helperText={errors.title?.message ?? ""}
+                  {...register("title")}
                   disabled={isLoading}
                 />
               </Grid>

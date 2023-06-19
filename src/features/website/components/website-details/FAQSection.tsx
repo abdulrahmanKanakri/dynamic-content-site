@@ -35,10 +35,10 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ faqs }) => {
                 return (
                   <Accordion key={i}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography fontWeight={600}>{item.title}</Typography>
+                      <Typography fontWeight={600}>{item.question}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>{item.description}</Typography>
+                      <Typography>{item.answer}</Typography>
                     </AccordionDetails>
                   </Accordion>
                 );

@@ -4,8 +4,9 @@ import { BaseResponse } from "@/types";
 import { WebsiteContent } from "../types";
 
 export type CreateWebsiteDTO = {
-  websiteName: string;
-  websiteDescription: string;
+  name: string;
+  description: string;
+  title: string;
   targetUser: string;
 };
 

@@ -6,8 +6,8 @@ export type KeyPoint = {
 };
 
 export type FAQItem = {
-  title: string;
-  description: string;
+  question: string;
+  answer: string;
 };
 
 export type WebsiteContent = {
